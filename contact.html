@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Parhaatplay | Contact</title>
+  <meta name="description" content="Contact Parhaatplay with questions about free-play, accessibility, or feedback.">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    :root {
+      --bg: #f7f9ff;
+      --surface: #ffffff;
+      --ink: #121421;
+      --muted: #4f5568;
+      --accent: #ff5a5f;
+      --accent-2: #1fc9ff;
+      --accent-3: #b8ff3d;
+      --accent-4: #ffd23a;
+      --edge: #dde6ff;
+      --shadow: 0 22px 50px rgba(18, 20, 33, 0.12);
+      --bento-glow: linear-gradient(135deg, rgba(255, 90, 95, 0.18), rgba(31, 201, 255, 0.2) 50%, rgba(255, 210, 58, 0.22));
+    }
+    @font-face {
+      font-family: "DaisyePiqsay";
+      src: url("otf/daisye-piqsay-daisye-piqsay-svg-400.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: "DaisyePiqsay", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at 12% 10%, rgba(255, 90, 95, 0.28), transparent 55%),
+        radial-gradient(circle at 85% 15%, rgba(31, 201, 255, 0.28), transparent 48%),
+        linear-gradient(135deg, #fff5f1, #f1fbff);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      border-radius: 999px;
+      opacity: 0.35;
+      z-index: 0;
+      pointer-events: none;
+    }
+    body::before {
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(255, 90, 95, 0.75), transparent 70%);
+      top: -140px;
+      left: -120px;
+    }
+    body::after {
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(31, 201, 255, 0.7), transparent 70%);
+      bottom: -120px;
+      right: -100px;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    main {
+      padding: 32px 16px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    main > section {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: rise 0.7s ease forwards;
+      background: var(--surface);
+      border: 1px solid var(--edge);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    main > section:nth-of-type(1) { animation-delay: 0.05s; }
+    main > section:nth-of-type(2) { animation-delay: 0.12s; }
+    h1, h2, h3, h4 {
+      font-family: "DaisyePiqsay", "Georgia", "Times New Roman", serif;
+      margin: 0 0 12px;
+    }
+    p {
+      margin: 0 0 12px;
+    }
+    :focus-visible {
+      outline: 3px solid var(--accent-2);
+      outline-offset: 2px;
+    }
+    [hidden] {
+      display: none !important;
+    }
+
+    .site-head-c9k2v4 {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid var(--edge);
+      backdrop-filter: blur(8px);
+    }
+    .head-inner-c3m7n1 {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .brand-mark-c6d8x5 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .head-inner-c3m7n1 nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .head-inner-c3m7n1 nav a {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(31, 201, 255, 0.22);
+      border: 1px solid rgba(31, 201, 255, 0.35);
+      box-shadow: 0 10px 18px rgba(18, 20, 33, 0.08);
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .head-inner-c3m7n1 nav a:hover {
+      background: rgba(31, 201, 255, 0.35);
+      box-shadow: 0 14px 22px rgba(18, 20, 33, 0.14);
+      transform: translateY(-1px);
+    }
+    .head-note-c1r9c3 {
+      font-size: 0.8rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(255, 90, 95, 0.28), rgba(255, 210, 58, 0.35));
+      border: 1px solid rgba(255, 90, 95, 0.35);
+      color: #6b1f25;
+      white-space: nowrap;
+    }
+
+    .contact-wrap-c4t6h8 {
+      margin-top: 20px;
+      padding: 28px;
+      background: var(--bento-glow);
+      border: 1px solid var(--edge);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 20px;
+    }
+    .contact-wrap-c4t6h8 p {
+      max-width: 560px;
+      color: var(--muted);
+    }
+    .contact-wrap-c4t6h8 form {
+      display: grid;
+      gap: 12px;
+      margin-top: 6px;
+    }
+    .contact-wrap-c4t6h8 label {
+      display: grid;
+      gap: 6px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .contact-wrap-c4t6h8 input,
+    .contact-wrap-c4t6h8 textarea {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--edge);
+      background: #fff;
+      font-family: inherit;
+    }
+    .contact-wrap-c4t6h8 textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .contact-wrap-c4t6h8 button {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent-2);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      justify-self: start;
+    }
+    .contact-wrap-c4t6h8 [data-contact-success] {
+      background: #e9fff4;
+      border: 1px solid rgba(31, 201, 255, 0.35);
+      padding: 12px;
+      border-radius: 12px;
+      color: #205d5f;
+    }
+
+    .answers-wrap-c8q2f7 {
+      margin-top: 40px;
+    }
+    .answers-wrap-c8q2f7 header p {
+      max-width: 520px;
+      color: var(--muted);
+    }
+    .answers-wrap-c8q2f7 details {
+      background: var(--surface);
+      border: 1px solid var(--edge);
+      border-radius: 16px;
+      padding: 12px 16px;
+      margin-top: 12px;
+    }
+    .answers-wrap-c8q2f7 summary {
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .answers-wrap-c8q2f7 summary::marker {
+      color: var(--accent);
+    }
+
+    .response-wrap-v2m7k4 header p {
+      max-width: 620px;
+      color: var(--muted);
+    }
+    .response-wrap-v2m7k4 ul {
+      margin: 16px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      display: grid;
+      gap: 8px;
+    }
+    .response-wrap-v2m7k4 li {
+      line-height: 1.5;
+    }
+
+    .site-foot-c0w6z1 {
+      margin-top: 60px;
+      border-top: 1px solid var(--edge);
+      background: rgba(255, 255, 255, 0.9);
+      position: relative;
+      z-index: 1;
+    }
+    .foot-inner-c7y2g4 {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 16px;
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .foot-inner-c7y2g4 p {
+      color: var(--muted);
+    }
+    .foot-inner-c7y2g4 nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .foot-inner-c7y2g4 nav a {
+      color: var(--muted);
+    }
+    .foot-inner-c7y2g4 nav a:hover {
+      color: var(--accent);
+    }
+    .newsletter-box-c5e3b9 form {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .newsletter-box-c5e3b9 label {
+      display: grid;
+      gap: 6px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .newsletter-box-c5e3b9 input {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--edge);
+      background: #fff;
+      font-family: inherit;
+    }
+    .newsletter-box-c5e3b9 button {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent-2);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .newsletter-box-c5e3b9 [data-newsletter-success] {
+      background: #e9fff4;
+      border: 1px solid rgba(31, 201, 255, 0.35);
+      padding: 12px;
+      border-radius: 12px;
+      color: #205d5f;
+    }
+    .foot-bar-c2c8m6 {
+      border-top: 1px dashed var(--edge);
+      padding: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .cookie-bar-c6n3x7 {
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      background: #ffffff;
+      border: 1px solid var(--edge);
+      border-radius: 16px;
+      padding: 12px 16px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 20;
+    }
+    .cookie-bar-c6n3x7 p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .cookie-bar-c6n3x7 button {
+      border-radius: 999px;
+      padding: 8px 14px;
+      border: 1px solid var(--accent-2);
+      background: var(--accent-2);
+      color: #fff;
+      cursor: pointer;
+    }
+    .cookie-bar-c6n3x7 button:last-child {
+      background: transparent;
+      color: var(--accent-2);
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (max-width: 720px) {
+      .head-inner-c3m7n1 {
+        justify-content: center;
+      }
+      .head-note-c1r9c3 {
+        order: 3;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      main > section {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-head-c9k2v4">
+    <div class="head-inner-c3m7n1">
+      <a class="brand-mark-c6d8x5" href="index.html" aria-label="Parhaatplay home">parhaatplay</a>
+      <nav aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="play.html">Play</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="head-note-c1r9c3">18+ only | Free-play</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="contact-wrap-c4t6h8">
+      <div>
+        <h1>Contact us</h1>
+        <p>Have a question about free-play, accessibility, or the site layout? Send a note and we will respond with a clear, helpful reply.</p>
+      </div>
+      <form data-contact-form>
+        <label>
+          Name
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" autocomplete="email" required>
+        </label>
+        <label>
+          Message
+          <textarea name="message" required></textarea>
+        </label>
+        <button type="submit">Send message</button>
+      </form>
+      <div data-contact-success hidden aria-live="polite">
+        Thanks for reaching out. We will reply soon.
+      </div>
+    </section>
+
+    <section class="answers-wrap-c8q2f7">
+      <header>
+        <h2>Quick answers</h2>
+        <p>Need a quick answer? Here are a few common questions.</p>
+      </header>
+      <details>
+        <summary>Is there any real money play?</summary>
+        <p>No. Everything here is free-play only, with no real money, no prizes, and no cash-out.</p>
+      </details>
+      <details>
+        <summary>Do you offer prizes or payouts?</summary>
+        <p>No prizes, payouts, or cash-out. This lounge is just for fun.</p>
+      </details>
+      <details>
+        <summary>What devices are supported?</summary>
+        <p>Modern browsers on mobile, tablet, and desktop work best.</p>
+      </details>
+    </section>
+
+    <section class="response-wrap-v2m7k4">
+      <header>
+        <h2>What helps us respond</h2>
+        <p>Short, specific messages are easiest to answer. If you are reporting a bug, include the device and browser.</p>
+      </header>
+      <ul>
+        <li>Your device (phone, tablet, laptop).</li>
+        <li>Your browser and version if you know it.</li>
+        <li>What you expected versus what you saw.</li>
+      </ul>
+      <p>This is a front-end sample form. It shows a confirmation message but does not send anything.</p>
+    </section>
+  </main>
+
+  <footer class="site-foot-c0w6z1">
+    <div class="foot-inner-c7y2g4">
+      <div>
+        <h3>parhaatplay</h3>
+        <p>A social casino lounge for adults who enjoy casino-inspired visuals without real-money play.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <nav aria-label="Footer">
+          <a href="games.html">Games</a>
+          <a href="play.html">Play</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="terms.html">Terms</a>
+          <a href="policy.html">Privacy</a>
+        </nav>
+      </div>
+      <div class="newsletter-box-c5e3b9">
+        <h4>Newsletter</h4>
+        <p>Occasional updates about the lounge and site tweaks. No spam.</p>
+        <form data-newsletter-form>
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <button type="submit">Sign up</button>
+        </form>
+        <div data-newsletter-success hidden aria-live="polite">
+          Thanks for signing up. Watch for a short welcome note.
+        </div>
+      </div>
+    </div>
+    <div class="foot-bar-c2c8m6">
+      <span>18+ only. Free-play for entertainment, no real money, no prizes, no cash-out.</span>
+      <span>Questions? Email hello@parhaatplay.com</span>
+    </div>
+  </footer>
+
+  <div class="cookie-bar-c6n3x7" data-cookie-banner>
+    <p>We use cookies to remember your choice and keep the lounge running smoothly.</p>
+    <div>
+      <button type="button" data-cookie-accept>Accept</button>
+      <button type="button" data-cookie-decline>Decline</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // UI helpers for cookie consent, contact form, and newsletter feedback.
+
+      // Cookie banner: store the choice and hide it after selection.
+      const banner = document.querySelector('[data-cookie-banner]');
+      const accepted = (() => {
+        try { return localStorage.getItem('pp_cookie_choice'); } catch (err) { return null; }
+      })();
+      if (banner && accepted) {
+        banner.setAttribute('hidden', '');
+      }
+      const saveChoice = (value) => {
+        try { localStorage.setItem('pp_cookie_choice', value); } catch (err) {}
+        if (banner) {
+          banner.setAttribute('hidden', '');
+        }
+      };
+      const acceptBtn = document.querySelector('[data-cookie-accept]');
+      const declineBtn = document.querySelector('[data-cookie-decline]');
+      if (acceptBtn) {
+        acceptBtn.addEventListener('click', () => saveChoice('accepted'));
+      }
+      if (declineBtn) {
+        declineBtn.addEventListener('click', () => saveChoice('declined'));
+      }
+
+      // Contact form: show a success message without a backend.
+      const form = document.querySelector('[data-contact-form]');
+      const success = document.querySelector('[data-contact-success]');
+      if (form && success) {
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          form.setAttribute('hidden', '');
+          success.removeAttribute('hidden');
+        });
+      }
+
+      // Newsletter form: show a friendly success message.
+      const newsForm = document.querySelector('[data-newsletter-form]');
+      const newsSuccess = document.querySelector('[data-newsletter-success]');
+      if (newsForm && newsSuccess) {
+        newsForm.addEventListener('submit', (event) => {
+          event.preventDefault();
+          newsForm.setAttribute('hidden', '');
+          newsSuccess.removeAttribute('hidden');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

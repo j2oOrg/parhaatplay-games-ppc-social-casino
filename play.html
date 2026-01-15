@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Parhaatplay | Play</title>
+  <meta name="description" content="Play a Parhaatplay game in a dedicated view. Free-play only, 18+.">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    :root {
+      --bg: #f7f9ff;
+      --surface: #ffffff;
+      --ink: #121421;
+      --muted: #4f5568;
+      --accent: #ff5a5f;
+      --accent-2: #1fc9ff;
+      --accent-3: #b8ff3d;
+      --accent-4: #ffd23a;
+      --edge: #dde6ff;
+      --shadow: 0 22px 50px rgba(18, 20, 33, 0.12);
+      --bento-glow: linear-gradient(135deg, rgba(255, 90, 95, 0.18), rgba(31, 201, 255, 0.2) 50%, rgba(255, 210, 58, 0.22));
+    }
+    @font-face {
+      font-family: "DaisyePiqsay";
+      src: url("otf/daisye-piqsay-daisye-piqsay-svg-400.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: "DaisyePiqsay", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at 12% 10%, rgba(255, 90, 95, 0.28), transparent 55%),
+        radial-gradient(circle at 85% 15%, rgba(31, 201, 255, 0.28), transparent 48%),
+        linear-gradient(135deg, #fff5f1, #f1fbff);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      border-radius: 999px;
+      opacity: 0.35;
+      z-index: 0;
+      pointer-events: none;
+    }
+    body::before {
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(255, 90, 95, 0.75), transparent 70%);
+      top: -140px;
+      left: -120px;
+    }
+    body::after {
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(31, 201, 255, 0.7), transparent 70%);
+      bottom: -120px;
+      right: -100px;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    main {
+      padding: 32px 16px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    main > section {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: rise 0.7s ease forwards;
+      background: var(--surface);
+      border: 1px solid var(--edge);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    main > section:nth-of-type(1) { animation-delay: 0.05s; }
+    main > section:nth-of-type(2) { animation-delay: 0.12s; }
+    main > section:nth-of-type(3) { animation-delay: 0.18s; }
+    main > section:nth-of-type(4) { animation-delay: 0.24s; }
+    main > section:nth-of-type(5) { animation-delay: 0.3s; }
+    h1, h2, h3, h4 {
+      font-family: "DaisyePiqsay", "Georgia", "Times New Roman", serif;
+      margin: 0 0 12px;
+    }
+    p {
+      margin: 0 0 12px;
+    }
+    :focus-visible {
+      outline: 3px solid var(--accent-2);
+      outline-offset: 2px;
+    }
+    [hidden] {
+      display: none !important;
+    }
+
+    .site-head-p4k2v9 {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid var(--edge);
+      backdrop-filter: blur(8px);
+    }
+    .head-inner-p8m5n1 {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .brand-mark-p1d7x3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .head-inner-p8m5n1 nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .head-inner-p8m5n1 nav a {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(31, 201, 255, 0.22);
+      border: 1px solid rgba(31, 201, 255, 0.35);
+      box-shadow: 0 10px 18px rgba(18, 20, 33, 0.08);
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .head-inner-p8m5n1 nav a:hover {
+      background: rgba(31, 201, 255, 0.35);
+      box-shadow: 0 14px 22px rgba(18, 20, 33, 0.14);
+      transform: translateY(-1px);
+    }
+    .head-note-p6r9c2 {
+      font-size: 0.8rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(255, 90, 95, 0.28), rgba(255, 210, 58, 0.35));
+      border: 1px solid rgba(255, 90, 95, 0.35);
+      color: #6b1f25;
+      white-space: nowrap;
+    }
+
+    .play-wrap-p3t5h7 {
+      margin-top: 20px;
+      padding: 28px;
+      background: var(--bento-glow);
+      border: 1px solid var(--edge);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 20px;
+    }
+    .play-wrap-p3t5h7 small {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+    .play-wrap-p3t5h7 p {
+      color: var(--muted);
+    }
+    .play-wrap-p3t5h7 ul {
+      list-style: none;
+      margin: 12px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .play-wrap-p3t5h7 li {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--edge);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .preview-wrap-p9q2f6 {
+      margin-top: 32px;
+      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--edge);
+      border-radius: 22px;
+      display: grid;
+      gap: 16px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+    .preview-wrap-p9q2f6 p {
+      color: var(--muted);
+    }
+    .preview-wrap-p9q2f6 img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid var(--edge);
+    }
+
+    .frame-wrap-p2s8j4 {
+      margin-top: 32px;
+      padding: 20px;
+      background: #fff;
+      border: 1px solid var(--edge);
+      border-radius: 22px;
+      display: grid;
+      gap: 16px;
+      box-shadow: var(--shadow);
+    }
+    .frame-wrap-p2s8j4 > div:first-child {
+      background: #fff3c9;
+      border: 1px dashed rgba(255, 90, 95, 0.55);
+      border-radius: 16px;
+      padding: 12px 16px;
+      color: #6b1f25;
+    }
+    .frame-wrap-p2s8j4 iframe {
+      width: 100%;
+      min-height: 420px;
+      border: none;
+      border-radius: 18px;
+      background: #edf6ff;
+    }
+    .cta-row-p7u1l5 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .cta-row-p7u1l5 button {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent-2);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cta-row-p7u1l5 a {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--accent-2);
+      color: var(--accent-2);
+      font-weight: 600;
+    }
+
+    .balance-wrap-p4k1q7 header p {
+      color: var(--muted);
+      max-width: 640px;
+    }
+    .balance-wrap-p4k1q7 ul {
+      margin: 16px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      display: grid;
+      gap: 8px;
+    }
+    .balance-wrap-p4k1q7 li {
+      line-height: 1.5;
+    }
+
+    .tips-wrap-j3k8q1 header p {
+      color: var(--muted);
+      max-width: 640px;
+    }
+    .tips-wrap-j3k8q1 ul {
+      margin: 16px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      display: grid;
+      gap: 8px;
+    }
+    .tips-wrap-j3k8q1 li {
+      line-height: 1.5;
+    }
+
+    .site-foot-p0w6z2 {
+      margin-top: 60px;
+      border-top: 1px solid var(--edge);
+      background: rgba(255, 255, 255, 0.9);
+      position: relative;
+      z-index: 1;
+    }
+    .foot-inner-p8y2g9 {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 16px;
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .foot-inner-p8y2g9 p {
+      color: var(--muted);
+    }
+    .foot-inner-p8y2g9 nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .foot-inner-p8y2g9 nav a {
+      color: var(--muted);
+    }
+    .foot-inner-p8y2g9 nav a:hover {
+      color: var(--accent);
+    }
+    .newsletter-box-p5e3b8 form {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .newsletter-box-p5e3b8 label {
+      display: grid;
+      gap: 6px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .newsletter-box-p5e3b8 input {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--edge);
+      background: #fff;
+      font-family: inherit;
+    }
+    .newsletter-box-p5e3b8 button {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent-2);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .newsletter-box-p5e3b8 [data-newsletter-success] {
+      background: #e9fff4;
+      border: 1px solid rgba(31, 201, 255, 0.35);
+      padding: 12px;
+      border-radius: 12px;
+      color: #205d5f;
+    }
+    .foot-bar-p1c7m4 {
+      border-top: 1px dashed var(--edge);
+      padding: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .cookie-bar-p6n3x8 {
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      background: #ffffff;
+      border: 1px solid var(--edge);
+      border-radius: 16px;
+      padding: 12px 16px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 20;
+    }
+    .cookie-bar-p6n3x8 p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .cookie-bar-p6n3x8 button {
+      border-radius: 999px;
+      padding: 8px 14px;
+      border: 1px solid var(--accent-2);
+      background: var(--accent-2);
+      color: #fff;
+      cursor: pointer;
+    }
+    .cookie-bar-p6n3x8 button:last-child {
+      background: transparent;
+      color: var(--accent-2);
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (min-width: 900px) {
+      .play-wrap-p3t5h7 {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+      }
+      .preview-wrap-p9q2f6 {
+        grid-template-columns: 0.9fr 1.1fr;
+      }
+    }
+    @media (max-width: 720px) {
+      .head-inner-p8m5n1 {
+        justify-content: center;
+      }
+      .head-note-p6r9c2 {
+        order: 3;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      main > section {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-head-p4k2v9">
+    <div class="head-inner-p8m5n1">
+      <a class="brand-mark-p1d7x3" href="index.html" aria-label="Parhaatplay home">parhaatplay</a>
+      <nav aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="play.html">Play</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="head-note-p6r9c2">18+ only | Free-play</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="play-wrap-p3t5h7">
+      <div>
+        <small data-game-tag>Game pick</small>
+        <h1 data-game-title>Your game table</h1>
+        <p data-game-desc>Loading a free-play session for entertainment only.</p>
+      </div>
+      <div>
+        <h2>Good to know</h2>
+        <ul>
+          <li>Social casino free-play only, no real money, no prizes, no cash-out.</li>
+          <li>For adults 18+.</li>
+          <li>Play as long or short as you like.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="preview-wrap-p9q2f6">
+      <div>
+        <h2>Preview</h2>
+        <p>A quick look at the game before you start.</p>
+      </div>
+      <img src="derby.png" alt="Game preview" loading="lazy" data-game-preview>
+    </section>
+
+    <section class="frame-wrap-p2s8j4">
+      <div>
+        <p><strong>Free-play only:</strong> This is entertainment play with no real money, no prizes, and no cash-out.</p>
+        <p><strong>18+ notice:</strong> Please play only if you are of legal age.</p>
+      </div>
+      <iframe title="Parhaatplay game" data-game-frame loading="lazy" src="https://asccw.playngonetwork.com/casino/ContainerLauncher?pid=2&gid=derbywheel&lang=en_GB&practice=1&channel=desktop&demo=2"></iframe>
+      <div class="cta-row-p7u1l5">
+        <button type="button" data-game-random>Pick another game</button>
+        <a href="https://asccw.playngonetwork.com/casino/ContainerLauncher?pid=2&gid=derbywheel&lang=en_GB&practice=1&channel=desktop&demo=2" target="_blank" rel="noopener" data-game-link>Open in new tab</a>
+      </div>
+    </section>
+
+    <section class="balance-wrap-p4k1q7">
+      <header>
+        <h2>Responsible play</h2>
+        <p>This is meant to be a light break, not a long session. A quick plan before you start keeps it that way.</p>
+      </header>
+      <p>Set a small time limit, even if it is just ten minutes. When the timer is up, close the tab and move on to whatever is next.</p>
+      <ul>
+        <li>Take breaks if you feel distracted, tired, or restless.</li>
+        <li>Keep the volume low in shared spaces so it stays in the background.</li>
+        <li>Step away if it stops being fun. Nothing is saved.</li>
+      </ul>
+      <p>We built this for short sessions, and it works best when you treat it that way.</p>
+    </section>
+
+    <section class="tips-wrap-j3k8q1">
+      <header>
+        <h2>If the game does not load</h2>
+        <p>Some browsers block third-party iframes, especially with strict privacy settings. The open-in-new-tab link is the easiest workaround.</p>
+      </header>
+      <ul>
+        <li>Refresh the page once before trying again.</li>
+        <li>Turn off strict tracking just for this page if needed.</li>
+        <li>Open the game in a new tab to avoid iframe blocks.</li>
+      </ul>
+      <p>Nothing is saved between sessions, so you can close the tab whenever you are done.</p>
+    </section>
+  </main>
+
+  <footer class="site-foot-p0w6z2">
+    <div class="foot-inner-p8y2g9">
+      <div>
+        <h3>parhaatplay</h3>
+        <p>A social casino lounge for adults who enjoy casino-inspired visuals without real-money play.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <nav aria-label="Footer">
+          <a href="games.html">Games</a>
+          <a href="play.html">Play</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="terms.html">Terms</a>
+          <a href="policy.html">Privacy</a>
+        </nav>
+      </div>
+      <div class="newsletter-box-p5e3b8">
+        <h4>Newsletter</h4>
+        <p>Occasional updates about the lounge and site tweaks. No spam.</p>
+        <form data-newsletter-form>
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <button type="submit">Sign up</button>
+        </form>
+        <div data-newsletter-success hidden aria-live="polite">
+          Thanks for signing up. Watch for a short welcome note.
+        </div>
+      </div>
+    </div>
+    <div class="foot-bar-p1c7m4">
+      <span>18+ only. Free-play for entertainment, no real money, no prizes, no cash-out.</span>
+      <span>Questions? Email hello@parhaatplay.com</span>
+    </div>
+  </footer>
+
+  <div class="cookie-bar-p6n3x8" data-cookie-banner>
+    <p>We use cookies to remember your choice and keep the lounge running smoothly.</p>
+    <div>
+      <button type="button" data-cookie-accept>Accept</button>
+      <button type="button" data-cookie-decline>Decline</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // UI helpers for cookie consent, newsletter feedback, and game selection.
+
+      // Cookie banner: store the choice and hide it after selection.
+      const banner = document.querySelector('[data-cookie-banner]');
+      const accepted = (() => {
+        try { return localStorage.getItem('pp_cookie_choice'); } catch (err) { return null; }
+      })();
+      if (banner && accepted) {
+        banner.setAttribute('hidden', '');
+      }
+      const saveChoice = (value) => {
+        try { localStorage.setItem('pp_cookie_choice', value); } catch (err) {}
+        if (banner) {
+          banner.setAttribute('hidden', '');
+        }
+      };
+      const acceptBtn = document.querySelector('[data-cookie-accept]');
+      const declineBtn = document.querySelector('[data-cookie-decline]');
+      if (acceptBtn) {
+        acceptBtn.addEventListener('click', () => saveChoice('accepted'));
+      }
+      if (declineBtn) {
+        declineBtn.addEventListener('click', () => saveChoice('declined'));
+      }
+
+      // Newsletter form: show a friendly success message.
+      const form = document.querySelector('[data-newsletter-form]');
+      const success = document.querySelector('[data-newsletter-success]');
+      if (form && success) {
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          form.setAttribute('hidden', '');
+          success.removeAttribute('hidden');
+        });
+      }
+
+      // Game loader: choose the game from the URL or at random, then update the iframe.
+      const gameUrl = 'https://asccw.playngonetwork.com/casino/ContainerLauncher?pid=2&gid=derbywheel&lang=en_GB&practice=1&channel=desktop&demo=2';
+      const gameList = [
+        { id: 'derby-wheel', name: 'Derby Wheel', tag: 'Main Stage', desc: 'Bold colors, a clear wheel layout, and a steady tempo.', url: gameUrl }
+      ];
+
+      const titleEl = document.querySelector('[data-game-title]');
+      const descEl = document.querySelector('[data-game-desc]');
+      const tagEl = document.querySelector('[data-game-tag]');
+      const frameEl = document.querySelector('[data-game-frame]');
+      const linkEl = document.querySelector('[data-game-link]');
+      const previewEl = document.querySelector('[data-game-preview]');
+      const randomBtn = document.querySelector('[data-game-random]');
+
+      const pickRandom = () => gameList[Math.floor(Math.random() * gameList.length)];
+      const param = new URLSearchParams(window.location.search).get('game');
+      let currentGame = gameList.find((game) => game.id === param) || pickRandom();
+
+      const setGame = (game) => {
+        currentGame = game;
+        if (titleEl) titleEl.textContent = game.name;
+        if (descEl) descEl.textContent = game.desc;
+        if (tagEl) tagEl.textContent = game.tag;
+        if (frameEl) frameEl.src = game.url;
+        if (linkEl) {
+          linkEl.href = game.url;
+          linkEl.textContent = `Open ${game.name} in new tab`;
+        }
+        if (previewEl) {
+          previewEl.alt = `${game.name} preview`;
+        }
+        try {
+          const url = new URL(window.location.href);
+          url.searchParams.set('game', game.id);
+          window.history.replaceState({}, '', url);
+        } catch (err) {}
+      };
+
+      setGame(currentGame);
+
+      if (randomBtn) {
+        randomBtn.addEventListener('click', () => {
+          let next = pickRandom();
+          if (gameList.length > 1) {
+            while (next.id === currentGame.id) {
+              next = pickRandom();
+            }
+          }
+          setGame(next);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
