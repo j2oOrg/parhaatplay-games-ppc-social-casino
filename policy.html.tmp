@@ -21,52 +21,6 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link href="assets/styles/css2.css" rel="stylesheet" />
     <link rel='stylesheet' href='assets/styles/rebrand.css' />
-    <style>
-      .site-foot-g8w2j5 {
-        margin-top: 60px;
-        border-top: 1px solid #dde6ff;
-        background: rgba(255, 255, 255, 0.9);
-      }
-      .foot-inner-g4e7b1 {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 32px 16px;
-        display: grid;
-        gap: 24px;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      }
-      .foot-inner-g4e7b1 p {
-        color: #4f5568;
-      }
-      .foot-inner-g4e7b1 nav {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .foot-inner-g4e7b1 nav a {
-        color: #4f5568;
-      }
-      .foot-inner-g4e7b1 nav a:hover {
-        color: #ff5a5f;
-      }
-      .foot-bar-g0y6l8 {
-        border-top: 1px dashed #dde6ff;
-        padding: 16px;
-        max-width: 1100px;
-        margin: 0 auto;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: space-between;
-        color: #4f5568;
-        font-size: 0.9rem;
-      }
-      @media (max-width: 720px) {
-        .foot-inner-g4e7b1 {
-          gap: 16px;
-        }
-      }
-    </style>
 </head>
 
   <body>
@@ -94,10 +48,6 @@
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="games.html">Games</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="terms.html">Terms</a></li>
-            <li><a href="policy.html">Privacy</a></li>
           </ul>
         </nav>
       </div>
@@ -267,37 +217,9 @@
         </ul>
       </div>
     </div>
-
-    <footer class="site-foot-g8w2j5">
-      <div class="foot-inner-g4e7b1">
-        <div>
-          <h3>parhaatplay</h3>
-          <p>A social casino website for adults who enjoy fast entertainment and social gameplay, no real-money gambling.</p>
-        </div>
-        <div>
-          <h4>Explore</h4>
-          <nav aria-label="Footer">
-            <a href="games.html">Games</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="terms.html">Terms</a>
-            <a href="policy.html">Privacy</a>
-          </nav>
-        </div>
-      </div>
-    <div class="foot-bar-g0y6l8">
-        <span>18+ only. Social casino entertainment, no real money, no prizes, no cash-out.</span>
-        <span>
-          Need support?
-          <a href="https://www.begambleaware.org/" style="color: inherit;" target="_blank" rel="noopener noreferrer">BeGambleAware</a>•
-          <a href="https://www.gamcare.org.uk/" style="color: inherit;" target="_blank" rel="noopener noreferrer">GamCare</a>•
-          <a href="https://www.gamblingtherapy.org/" style="color: inherit;" target="_blank" rel="noopener noreferrer">GamblingTherapy</a>
-        </span>
-        <span>Questions? Email hello@parhaatplay.com</span>
-      </div>
-    </footer>
   </body>
 </html>
+
 
 
 
